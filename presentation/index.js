@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   Anim, Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill,
   Heading, Image, Layout, Link, ListItem, List, Markdown, MarkdownSlides, Quote, Slide, SlideSet,
-  TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text, GoToAction
+  TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text, GoToAction, S
 } from 'spectacle';
 
 import preloader from 'spectacle/lib/utils/preloader';
@@ -61,9 +61,6 @@ export default class Presentation extends Component {
           </Text>
         </Slide>
         <Slide
-          onActive={slideIndex => {
-            console.info(`Viewing slide index: ${slideIndex}.`); // eslint-disable-line no-console
-          }}
           transition={[
             'fade',
             (transitioning, forward) => {
@@ -94,7 +91,46 @@ export default class Presentation extends Component {
             He’s worked on small teams at agencies, large teams at successful startups, and as the owner of a small business. 
           </Text>
         </Slide>
-        <Slide
+
+
+        <SlideSet>
+          <Slide transition={['slide']}>
+            <div>
+              <Heading size={1} caps  textColor="secondary">
+                TOPICS
+              </Heading>
+              <List>
+                <Appear><ListItem>Component Composition</ListItem></Appear>
+                <Appear><ListItem>Extending React</ListItem></Appear>
+                <Appear><ListItem>Compound Components</ListItem></Appear>
+                <Appear><ListItem>NEW! React Context You Can Use</ListItem></Appear>
+                <Appear><ListItem>Higher Order Components</ListItem></Appear>
+                <Appear><ListItem>Render Props</ListItem></Appear>
+                <Appear><ListItem>Accessible Components</ListItem></Appear>
+                <Appear><ListItem>NEW! React Call/Return</ListItem></Appear>
+                <Appear><ListItem>NEW! React Async Rendering and Data Loading</ListItem></Appear>
+              </List>
+            </div>
+          </Slide>
+          <Slide  transition={['none']}transitionDuration={0} >
+            <Heading size={1} caps  textColor="secondary">
+                TOPICS
+              </Heading>
+              <List>
+                <ListItem>Component Composition</ListItem>
+                <ListItem><S type="strikethrough">Extending React</S></ListItem>
+                <ListItem>Compound Components</ListItem>
+                <ListItem><S type="strikethrough">NEW!</S>React Context You Can Use</ListItem>
+                <ListItem>Higher Order Components</ListItem>
+                <ListItem>Render Props</ListItem>
+                <ListItem>Accessible Components</ListItem>
+                <ListItem><S type="strikethrough">NEW! React Call/Return</S></ListItem>
+                <ListItem>NEW! React Async Rendering and Data Loading</ListItem>
+              </List>
+          </Slide>
+        </SlideSet>
+
+        {/* <Slide
           transitionIn={['zoom', 'fade']}
           transitionOut={['slide', 'fade']}
           bgColor="primary"
@@ -106,7 +142,7 @@ export default class Presentation extends Component {
             margin="20px auto"
             overflow="overflow"
           />
-        </Slide>
+        </Slide> */}
         {/* <Slide goTo={3}>
           <ComponentPlayground
             theme="dark"
@@ -130,11 +166,11 @@ export default class Presentation extends Component {
           </Appear>
         </Slide>
         <Slide transition={['slide']}>
-            <div>
-              <Heading size={6} caps fit textColor="secondary">
-                Flexible<br />animations
-              </Heading>
-            </div>
+          <div>
+            <Heading size={6} caps fit textColor="secondary">
+              Flexible<br />animations
+            </Heading>
+          </div>
         </Slide>
         <Slide transition={['slide']} bgDarken={0.75} getAnimStep={this.updateSteps}>
           <Appear>
