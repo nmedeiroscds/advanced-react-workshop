@@ -10,7 +10,7 @@ import preloader from 'spectacle/lib/utils/preloader';
 
 import createTheme from "spectacle/lib/themes/default";
 
-import Interactive from '../assets/interactive';
+import Tachable from '../assets/tachable';
 
 require('normalize.css');
 
@@ -93,56 +93,114 @@ export default class Presentation extends Component {
         </Slide>
 
 
+        <Slide transition={['slide']}>
+          <div>
+            <Heading size={1} caps  textColor="secondary">
+              TOPICS
+            </Heading>
+            <List>
+              <Appear><ListItem>Component Composition</ListItem></Appear>
+              <Appear><ListItem>Extending React</ListItem></Appear>
+              <Appear><ListItem>Compound Components</ListItem></Appear>
+              <Appear><ListItem>NEW! React Context You Can Use</ListItem></Appear>
+              <Appear><ListItem>Higher Order Components</ListItem></Appear>
+              <Appear><ListItem>Render Props</ListItem></Appear>
+              <Appear><ListItem>Accessible Components</ListItem></Appear>
+              <Appear><ListItem>NEW! React Call/Return</ListItem></Appear>
+              <Appear><ListItem>NEW! React Async Rendering and Data Loading</ListItem></Appear>
+            </List>
+          </div>
+        </Slide>
+
         <SlideSet>
-          <Slide transition={['slide']}>
-            <div>
-              <Heading size={1} caps  textColor="secondary">
-                TOPICS
+          <Slide
+            transition={['slide']} 
+            notes="Imperativo: Es como manejar un auto con cambios manuales
+                donde para llegar a 100km tenes que ir haciendo los cambios
+                Declarativo: En un auto automatico con cruise control, le decis quiero
+                ir a 100km y el lo hace.
+                
+                Al programar declarativamente decimos el estado al que queremos llegar.
+                Eliminamos el tiempo
+                UI = f(e)
+                
+
+                
+                "
+
+          >
+            <Heading size={1} caps  textColor="tertiary">
+              Declarativo
+            </Heading>
+            <Appear fid="2">
+              <Heading size={5} textColor="secondary">
+                Eliminamos el tiempo 
               </Heading>
-              <List>
-                <Appear><ListItem>Component Composition</ListItem></Appear>
-                <Appear><ListItem>Extending React</ListItem></Appear>
-                <Appear><ListItem>Compound Components</ListItem></Appear>
-                <Appear><ListItem>NEW! React Context You Can Use</ListItem></Appear>
-                <Appear><ListItem>Higher Order Components</ListItem></Appear>
-                <Appear><ListItem>Render Props</ListItem></Appear>
-                <Appear><ListItem>Accessible Components</ListItem></Appear>
-                <Appear><ListItem>NEW! React Call/Return</ListItem></Appear>
-                <Appear><ListItem>NEW! React Async Rendering and Data Loading</ListItem></Appear>
-              </List>
+            </Appear>
+            <Appear fid="3">
+              <Heading size={1} textColor="tertiary">
+              <S type="italic">UI = f(state)</S>
+              </Heading>
+            </Appear>
+            <Appear fid="3" >
+              <Heading size={4} fit textColor="tertiary" margin="40px 0">
+              <S type="italic">componentDidMount()</S> y <S type="italic">componentDidUpdate()</S>
+              </Heading>
+            </Appear>
+          </Slide>
+
+          <Slide transition={['spin']} >
+            <div>
+              <Heading size={2} caps fit textColor="tertiary" >
+                Ya que estamos...
+              </Heading>
+              
+              <Appear fid="1" >
+                <Text>
+                  <Tachable>
+                    <S type="italic">componentDidMount()</S> ni <S type="italic">componentDidUpdate()</S>.
+                  </Tachable>
+                </Text>
+              </Appear>
             </div>
           </Slide>
-          <Slide  transition={['none']}transitionDuration={0} >
-            <Heading size={1} caps  textColor="secondary">
-                TOPICS
-              </Heading>
-              <List>
-                <ListItem>Component Composition</ListItem>
-                <ListItem><S type="strikethrough">Extending React</S></ListItem>
-                <ListItem>Compound Components</ListItem>
-                <ListItem><S type="strikethrough">NEW!</S>React Context You Can Use</ListItem>
-                <ListItem>Higher Order Components</ListItem>
-                <ListItem>Render Props</ListItem>
-                <ListItem>Accessible Components</ListItem>
-                <ListItem><S type="strikethrough">NEW! React Call/Return</S></ListItem>
-                <ListItem>NEW! React Async Rendering and Data Loading</ListItem>
-              </List>
+
+          <Slide
+            transitionIn={['zoom', 'fade']}
+            transitionOut={['slide', 'fade']}
+            bgColor="primary"
+            margin="-50px 0 40px 0"
+            notes="<ul><li>talk about that</li><li>and that</li></ul>"
+          >
+            <Heading size={3} caps  textColor="tertiary">
+              Imperativo
+            </Heading>
+            <CodePane
+              lang="jsx"
+              source={require('raw-loader!../assets/01/01-lecture/AppStart.example')}
+              height="600px"
+              overflow="auto"
+            />
+          </Slide>
+
+          <Slide
+            transitionIn={['zoom', 'fade']}
+            transitionOut={['slide', 'fade']}
+            bgColor="primary"
+            margin="-50px 0 40px 0"
+            notes="<ul><li>talk about that</li><li>and that</li></ul>"
+          >
+            <Heading size={3} caps  textColor="tertiary">
+              Declarativo
+            </Heading>
+            <CodePane
+              lang="jsx"
+              source={require('raw-loader!../assets/01/01-lecture/App.example')}
+              height="600px"
+              overflow="auto"
+            />
           </Slide>
         </SlideSet>
-
-        {/* <Slide
-          transitionIn={['zoom', 'fade']}
-          transitionOut={['slide', 'fade']}
-          bgColor="primary"
-          notes="<ul><li>talk about that</li><li>and that</li></ul>"
-        >
-          <CodePane
-            lang="jsx"
-            source={require('raw-loader!../assets/deck.example')}
-            margin="20px auto"
-            overflow="overflow"
-          />
-        </Slide> */}
         {/* <Slide goTo={3}>
           <ComponentPlayground
             theme="dark"
@@ -267,7 +325,7 @@ const myCode = (is, great) => 'for' + 'sharing';
             <Heading size={1} caps fit textColor="tertiary">
               Your presentations are interactive
             </Heading>
-            <Interactive />
+            <Tachable />
           </Slide>
         </SlideSet>
         <Slide transition={['slide']} bgColor="primary"
