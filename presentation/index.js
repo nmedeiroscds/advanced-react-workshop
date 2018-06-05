@@ -134,7 +134,7 @@ export default class Presentation extends Component {
             </Heading>
             <Appear fid="2">
               <Heading size={5} textColor="secondary">
-                Eliminamos el tiempo 
+                We eliminate time
               </Heading>
             </Appear>
             <Appear fid="3">
@@ -149,6 +149,7 @@ export default class Presentation extends Component {
             </Appear>
           </Slide>
 
+          
           <Slide transition={['spin']} >
             <div>
               <Heading size={2} caps fit textColor="tertiary" >
@@ -157,23 +158,20 @@ export default class Presentation extends Component {
               
               <Appear fid="1" >
                 <Text>
-                  <Tachable>
-                    <S type="italic">componentDidMount()</S> ni <S type="italic">componentDidUpdate()</S>.
-                  </Tachable>
+                  <S type="italic strikethrough">componentDidMount()</S> ni <S type="italic strikethrough">componentDidUpdate()</S>.
                 </Text>
               </Appear>
             </div>
           </Slide>
 
           <Slide
-            transitionIn={['zoom', 'fade']}
-            transitionOut={['slide', 'fade']}
+            transitionIn={['slide']}
             bgColor="primary"
             margin="-50px 0 40px 0"
             notes="<ul><li>talk about that</li><li>and that</li></ul>"
           >
             <Heading size={3} caps  textColor="tertiary">
-              Imperativo
+              Imperative
             </Heading>
             <CodePane
               lang="jsx"
@@ -184,14 +182,13 @@ export default class Presentation extends Component {
           </Slide>
 
           <Slide
-            transitionIn={['zoom', 'fade']}
-            transitionOut={['slide', 'fade']}
+            transitionIn={['slide']}
             bgColor="primary"
             margin="-50px 0 40px 0"
             notes="<ul><li>talk about that</li><li>and that</li></ul>"
           >
             <Heading size={3} caps  textColor="tertiary">
-              Declarativo
+              Declarative
             </Heading>
             <CodePane
               lang="jsx"
@@ -206,6 +203,22 @@ export default class Presentation extends Component {
             theme="dark"
           />
         </Slide> */}
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes="<ul><li>talk about that</li><li>and that</li></ul>"
+        >
+          <Heading size={3} caps  textColor="tertiary">
+            Composable
+          </Heading>
+          <CodePane
+            lang="jsx"
+            source={require('raw-loader!../assets/02/02-lecture/AppStart.example')}
+            height="600px"
+            overflow="auto"
+          />
+        </Slide>
         <Slide transition={['slide']} bgImage={images.tren.replace('/', '')} bgDarken={0.55}>
           <Appear fid="1">
             <Heading size={1} caps fit textColor="primary">
