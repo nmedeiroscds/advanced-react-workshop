@@ -1,0 +1,39 @@
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Tabs>
+
+          {/* ☢️ Agregamos un div: */}
+          <div>
+
+            <TabList>
+              <Tab>
+                <FaAutomobile />
+              </Tab>
+              <Tab>
+                <FaBed />
+              </Tab>
+              <Tab>
+                <FaPlane />
+              </Tab>
+              <Tab>
+                <FaSpaceShuttle />
+              </Tab>
+            </TabList>
+
+          {/* Se rompe todo 💥💥💥💥 */}
+          </div>
+
+          <TabPanels>
+            <TabPanel>{text.cars}</TabPanel>
+            <TabPanel>{text.hotels}</TabPanel>
+            <TabPanel>{text.flights}</TabPanel>
+            <TabPanel>{text.space}</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </div>
+    );
+  }
+}

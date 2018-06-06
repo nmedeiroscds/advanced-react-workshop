@@ -1,3 +1,4 @@
+
 import "./index.css";
 import React, { Component } from "react";
 import FaAutomobile from "react-icons/lib/fa/automobile";
@@ -68,47 +69,33 @@ class TabPanel extends Component {
   }
 }
 
-class DataTabs extends Component {
-  render() {
-    const { data } = this.props;
-    return (
-      <Tabs>
-        <TabPanels>
-          {data.map((tab, index) => (
-            <TabPanel key={index}>{tab.content}</TabPanel>
-          ))}
-        </TabPanels>
-        <TabList>
-          {data.map((tab, index) => <Tab key={index}>{tab.label}</Tab>)}
-        </TabList>
-      </Tabs>
-    );
-  }
-}
 
 class App extends Component {
   render() {
-    const tabData = [
-      {
-        label: <FaAutomobile />,
-        content: text.cars
-      },
-      {
-        label: <FaBed />,
-        content: text.hotels
-      },
-      {
-        label: <FaPlane />,
-        content: text.flights
-      },
-      {
-        label: <FaSpaceShuttle />,
-        content: text.space
-      }
-    ];
     return (
       <div className="App">
-        <DataTabs data={tabData} />
+        <Tabs>
+          <TabList>
+            <Tab>
+              <FaAutomobile />
+            </Tab>
+            <Tab>
+              <FaBed />
+            </Tab>
+            <Tab>
+              <FaPlane />
+            </Tab>
+            <Tab>
+              <FaSpaceShuttle />
+            </Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>{text.cars}</TabPanel>
+            <TabPanel>{text.hotels}</TabPanel>
+            <TabPanel>{text.flights}</TabPanel>
+            <TabPanel>{text.space}</TabPanel>
+          </TabPanels>
+        </Tabs>
       </div>
     );
   }

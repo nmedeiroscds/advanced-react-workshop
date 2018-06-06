@@ -1,0 +1,32 @@
+
+class App extends Component {
+  render() {
+    const tabData = [
+      {
+        label: <FaAutomobile />,
+        content: text.cars
+      },
+      {
+        label: <FaBed />,
+        content: text.hotels
+      },
+      {
+        label: <FaPlane />,
+        content: text.flights
+      },
+      {
+        label: <FaSpaceShuttle />,
+        content: text.space
+      }
+    ];
+    return (
+      <div className="App">
+        <Tabs 
+          data={tabData}
+          tabsOnBottm={true} />
+      </div>
+    );
+  }
+}
+
+export default App;

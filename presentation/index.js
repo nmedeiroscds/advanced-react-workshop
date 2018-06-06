@@ -129,7 +129,6 @@ export default class Presentation extends Component {
 
                 
                 "
-
           >
             <Heading size={1} caps  textColor="tertiary">
               Declarativo
@@ -187,7 +186,8 @@ export default class Presentation extends Component {
             transitionIn={['slide']}
             bgColor="primary"
             margin="-50px 0 40px 0"
-            notes="<ul><li>talk about that</li><li>and that</li></ul>"
+            notes="<ul><li>componentDidMount and componentDidUpdate are wonderful React life cycle hooks that can be used together in order to isolate and perform imperative operations. </li>
+                  <li>They are React's way of giving us a chance to participate in updating the app in response to a change in state.</li></ul>"
           >
             <Heading size={3} caps  textColor="tertiary">
               Declarative
@@ -199,12 +199,9 @@ export default class Presentation extends Component {
               overflow="auto"
             />
           </Slide>
+
         </SlideSet>
-        {/* <Slide goTo={3}>
-          <ComponentPlayground
-            theme="dark"
-          />
-        </Slide> */}
+
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
@@ -248,6 +245,58 @@ export default class Presentation extends Component {
                 <CodePane
                   margin={10}
                   lang="jsx"
+                  source={require('raw-loader!../assets/02/02-lecture/AppMedio.example')}
+                  height="600px"
+                  overflow="auto"
+                />
+              </Fill>
+           </Appear>
+          </Layout>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes="<ul><li>talk about that</li><li>and that</li></ul>"
+        >
+          <Heading size={3} caps  textColor="tertiary">
+            Composable
+          </Heading>
+          <Layout>
+            <Fill>
+              <Image width="90%" margin="10px auto 10px auto" src={images.tabs_bottom} />
+            </Fill>
+            <Fill>
+              <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/02/02-lecture/App.example')}
+                height="600px"
+                overflow="auto"
+              />
+            </Fill>
+          </Layout>
+        </Slide>
+        
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes="<ul><li>talk about that</li><li>and that</li></ul>"
+        >
+          <Heading size={3} caps  textColor="tertiary">
+            Composable
+          </Heading>
+          <Layout>
+            <Fill>
+              <Image width="90%" margin="10px auto 10px auto" src={images.tabs_bottom} />
+            </Fill>
+            <Appear fid="2">
+              <Fill>
+                <CodePane
+                  margin={10}
+                  lang="jsx"
                   source={require('raw-loader!../assets/02/02-lecture/App.example')}
                   height="600px"
                   overflow="auto"
@@ -257,179 +306,93 @@ export default class Presentation extends Component {
           </Layout>
         </Slide>
 
-
-        <Slide transition={['slide']} bgImage={images.tren.replace('/', '')} bgDarken={0.55}>
-          <Appear fid="1">
-            <Heading size={1} caps fit textColor="primary">
-              Full Width
-            </Heading>
-          </Appear>
-          <Appear fid="2">
-            <Heading size={1} caps fit textColor="tertiary">
-              Adjustable Darkness
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={1} caps fit textColor="primary">
-              Background Imagery
-            </Heading>
-          </Appear>
-        </Slide>
-        <Slide transition={['slide']}>
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes="Implicit state: non app-level state that the product developer doesn't care about or see in order to use the component API successfully; in React, this is generally accomplished by using React.Children.map and React.cloneElement in order to implicitly pass state-derived or event-callback props to children
+                  Component components: design architecture that helps avoid having one component in charge of too much rendering or state; the pattern encourages components to have limit responsibility, which helps identify where certain state and rendering should be owned in a component composition, rather than exposing all options at a single, top-level component with an ever-growing list of props
+                  Compound components generally have some level of implicit prop passing in order to accomplish the task of limited responsibility. Rather than treating children components as something to be immediately rendered, compound components clone and extend children components in order pass along useful data."
+        >
           <div>
-            <Heading size={6} caps fit textColor="secondary">
-              Flexible<br />animations
+            <Heading size={2} caps  textColor="tertiary" >
+              TL;DR
             </Heading>
+            
+            <List>
+              <Appear><ListItem><S type="bold">Implicit state</S>: state que no está a nivel de App, por lo que no le interesa al usuario de la API del componente. En React esto lo logramos usando <S type="italic">React.Children.map()</S> y <S type="italic">React.cloneElement()</S></ListItem></Appear>
+              <Appear><ListItem><S type="bold">Component components</S>: arquitectura que ayuda a evitar que un componente tenga demasiada responsabilidad de rendering o state (ej: jQuery datepicker)</ListItem></Appear>
+              <Appear><ListItem><S type="bold">Compound components</S>: en general se necesita pasar props implicitamente, clonando elementos, para lograr limitar la responsabilidad</ListItem></Appear>
+            </List>
           </div>
         </Slide>
-        <Slide transition={['slide']} bgDarken={0.75} getAnimStep={this.updateSteps}>
-          <Appear>
-            <Heading size={1} caps textColor="tertiary">
-              Can
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading size={1} caps textColor="secondary">
-              Count
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading size={1} caps textColor="tertiary">
-              Steps
-            </Heading>
-          </Appear>
-          <Heading size={1} caps fit textColor="secondary">
-            Steps: {this.state.steps}
-          </Heading>
-        </Slide>
-        <Slide transition={['zoom', 'fade']} bgColor="primary">
-          <Heading caps fit>Flexible Layouts</Heading>
-          <Layout>
-            <Fill>
-              <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                Left
-              </Heading>
-            </Fill>
-            <Fill>
-              <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                Right
-              </Heading>
-            </Fill>
-          </Layout>
-        </Slide>
-        <Slide transition={['slide']} bgColor="black">
-          <BlockQuote>
-            <Quote>Wonderfully formatted quotes</Quote>
-            <Cite>Ken Wheeler</Cite>
-          </BlockQuote>
-        </Slide>
-        <Slide transition={['spin', 'zoom']} bgColor="tertiary" controlColor="primary" progressColor="primary">
-          <Heading caps fit size={1} textColor="primary">
-            Inline Markdown
-          </Heading>
-          <Markdown>
-            {`
-  ![Markdown Logo](${images.markdown.replace('/', '')})
 
-  You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-  * Lists too!
-  * With ~~strikethrough~~ and _italic_
-  * And let's not forget **bold**
-  * Add some \`inline code\` to your sldes!
-            `}
-          </Markdown>
-        </Slide>
-        {
-          MarkdownSlides`
-#### Create Multiple Slides in Markdown
-All the same tags and elements supported in <Markdown /> are supported in MarkdownSlides.
----
-Slides are separated with **three dashes** and can be used _anywhere_ in the deck. The markdown can either be:
-* A Tagged Template Literal
-* Imported Markdown from another file
----
-Add some inline code to your markdown!
-
-\`\`\`js
-const myCode = (is, great) => 'for' + 'sharing';
-\`\`\`
-          `
-        }
-        <Slide transition={['slide', 'spin']} bgColor="primary">
-          <Heading caps fit size={1} textColor="tertiary">
-            Smooth
-          </Heading>
-          <Heading caps fit size={1} textColor="secondary">
-            Combinable Transitions
-          </Heading>
-        </Slide>
-        <SlideSet>
-          <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-            <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
-            </List>
-          </Slide>
-          <Slide transition={['slide']} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
-            </Heading>
-            <Tachable />
-          </Slide>
-        </SlideSet>
-        <Slide transition={['slide']} bgColor="primary"
-          notes="Hard to find cities without any pizza"
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes="
+            React context is implemented in two parts: a provider and a consumer.
+            The provider component uses the static childContextTypes property in order to specify the name, type, and requirement of the context it plans to provide, and then makes use of the getChildContext life cycle hook to actually provide a context object.
+            The consumer component uses the static contextTypes property to specific the name, type, and requirement of the context it plans to consume. If the context properties on the provider match the context properties on the consumer, the consumer can make use of the properties available within the component on this.context.
+          "
         >
-          <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-            Pizza Toppings
-          </Heading>
-          <Layout>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderItem />
-                  <TableHeaderItem>2011</TableHeaderItem>
-                  <TableHeaderItem>2013</TableHeaderItem>
-                  <TableHeaderItem>2015</TableHeaderItem>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableItem>None</TableItem>
-                  <TableItem>61.8%</TableItem>
-                  <TableItem>39.6%</TableItem>
-                  <TableItem>35.0%</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem>Pineapple</TableItem>
-                  <TableItem>28.3%</TableItem>
-                  <TableItem>54.5%</TableItem>
-                  <TableItem>61.5%</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem>Pepperoni</TableItem>
-                  <TableItem />
-                  <TableItem>50.2%</TableItem>
-                  <TableItem>77.2%</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem>Olives</TableItem>
-                  <TableItem />
-                  <TableItem>24.9%</TableItem>
-                  <TableItem>55.9%</TableItem>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </Layout>
+          <div>
+            <Heading size={2} caps  textColor="tertiary" >
+              Implicit State with Context
+            </Heading>
+            
+            <Fill>
+              <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/03/03-lecture/AppStart.example')}
+                height="600px"
+                overflow="auto"
+              />
+            </Fill>
+          </div>
         </Slide>
-        <Slide transition={['spin', 'slide']} bgColor="tertiary">
-          <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-            Made with love in Seattle by
-          </Heading>
-          <Link href="http://www.formidable.com"><Image width="100%" src={images.logo} /></Link>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={2} caps  textColor="tertiary" >
+              Context
+            </Heading>
+            <List>
+              <ListItem>React context se implementa en dos partes: un <S type="italic">provider</S> y un <S type="italic">consumer</S>.</ListItem>
+              <ListItem><S type="bold">Provider</S>: usa la propiedad estática <S type="italic">childContextTypes</S> para especificar el contexto que va a proveer y luego utlizando el hook <S type="italic">getChildContext</S> puede preveer el context</ListItem>
+              <ListItem><S type="bold">Consumer</S>: usa la propiedad estática <S type="italic">contextTypes</S> para especificar el contexto que va a consumir. Luego puede utilizar las propiedades de <S type="italic">this.context</S> que matcheen con las declaradas por el <S type="italic">provider</S> </ListItem>
+            </List>  
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={2} caps  textColor="tertiary" >
+              Context
+            </Heading>
+            
+            <Fill>
+              <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/03/03-lecture/App.example')}
+                height="600px"
+                overflow="auto"
+              />
+            </Fill>
+          </div>
         </Slide>
       </Deck>
     );
