@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  Anim, Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill,
+  Anim, Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill, Fit,
   Heading, Image, Layout, Link, ListItem, List, Markdown, MarkdownSlides, Quote, Slide, SlideSet,
   TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text, GoToAction, S
 } from 'spectacle';
@@ -17,6 +17,8 @@ require('normalize.css');
 const images = {
   tren: require('../assets/tren.jpg'),
   ryanflorence: require('../assets/ryanflorence_400x400.jpg'),
+  tabs: require('../assets/tabs.png'),
+  tabs_bottom: require('../assets/tabs_bottom.png'),
   logo: require('../assets/formidable-logo.svg'),
   markdown: require('../assets/markdown.png')
 };
@@ -210,15 +212,52 @@ export default class Presentation extends Component {
           notes="<ul><li>talk about that</li><li>and that</li></ul>"
         >
           <Heading size={3} caps  textColor="tertiary">
+            Composable?
+          </Heading>
+          <Layout>
+            <Fill>
+              <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/02/02-lecture/AppStart.example')}
+                height="600px"
+                overflow="auto"
+              />
+            </Fill>
+            <Fill>
+              <Image width="90%" margin="10px auto 10px auto" src={images.tabs} />
+            </Fill>
+          </Layout>
+        </Slide>
+        
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="-50px 0 40px 0"
+          notes="<ul><li>talk about that</li><li>and that</li></ul>"
+        >
+          <Heading size={3} caps  textColor="tertiary">
             Composable
           </Heading>
-          <CodePane
-            lang="jsx"
-            source={require('raw-loader!../assets/02/02-lecture/AppStart.example')}
-            height="600px"
-            overflow="auto"
-          />
+          <Layout>
+            <Fill>
+              <Image width="90%" margin="10px auto 10px auto" src={images.tabs_bottom} />
+            </Fill>
+            <Appear fid="2">
+              <Fill>
+                <CodePane
+                  margin={10}
+                  lang="jsx"
+                  source={require('raw-loader!../assets/02/02-lecture/App.example')}
+                  height="600px"
+                  overflow="auto"
+                />
+              </Fill>
+           </Appear>
+          </Layout>
         </Slide>
+
+
         <Slide transition={['slide']} bgImage={images.tren.replace('/', '')} bgDarken={0.55}>
           <Appear fid="1">
             <Heading size={1} caps fit textColor="primary">
