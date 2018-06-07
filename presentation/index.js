@@ -19,6 +19,7 @@ const images = {
   ryanflorence: require('../assets/ryanflorence_400x400.jpg'),
   tabs: require('../assets/tabs.png'),
   tabs_bottom: require('../assets/tabs_bottom.png'),
+  hambur: require('../assets/hambur.jpg'),
   logo: require('../assets/formidable-logo.svg'),
   markdown: require('../assets/markdown.png')
 };
@@ -49,6 +50,7 @@ export default class Presentation extends Component {
   render() {
     return (
       <Deck transition={['zoom', 'slide']} theme={theme} transitionDuration={500}>
+        
         <Slide transition={['zoom']} bgColor="primary" bgImage={images.tren.replace('/', '')} bgDarken={0.55}>
           <Heading size={4} textColor="white" caps>
             Advanced React of today and tomorrow
@@ -159,7 +161,7 @@ export default class Presentation extends Component {
               
               <Appear fid="1" >
                 <Text>
-                  <S type="italic strikethrough">componentDidMount()</S> ni <S type="italic strikethrough">componentDidUpdate()</S>.
+                  <S type="italic strikethrough">componentWillMount()</S> ni <S type="italic strikethrough">componentWillUpdate()</S>.
                 </Text>
               </Appear>
             </div>
@@ -168,7 +170,7 @@ export default class Presentation extends Component {
           <Slide
             transitionIn={['slide']}
             bgColor="primary"
-            margin="-50px 0 40px 0"
+            margin="0px 0 40px 0"
             notes="<ul><li>talk about that</li><li>and that</li></ul>"
           >
             <Heading size={3} caps  textColor="tertiary">
@@ -177,7 +179,7 @@ export default class Presentation extends Component {
             <CodePane
               lang="jsx"
               source={require('raw-loader!../assets/01/01-lecture/AppStart.example')}
-              height="600px"
+              height="550px"
               overflow="auto"
             />
           </Slide>
@@ -185,7 +187,7 @@ export default class Presentation extends Component {
           <Slide
             transitionIn={['slide']}
             bgColor="primary"
-            margin="-50px 0 40px 0"
+            margin="0px 0 40px 0"
             notes="<ul><li>componentDidMount and componentDidUpdate are wonderful React life cycle hooks that can be used together in order to isolate and perform imperative operations. </li>
                   <li>They are React's way of giving us a chance to participate in updating the app in response to a change in state.</li></ul>"
           >
@@ -195,9 +197,30 @@ export default class Presentation extends Component {
             <CodePane
               lang="jsx"
               source={require('raw-loader!../assets/01/01-lecture/App.example')}
-              height="600px"
+              height="550px"
               overflow="auto"
             />
+          </Slide>
+
+          <Slide
+            transitionIn={['slide']}
+            bgColor="primary"
+            margin="0px 0 40px 0"
+            notes=""
+          >
+            <Heading size={3} caps  textColor="tertiary">
+            TL;DR
+            </Heading>
+            <Text textAlign="left">
+            
+              <p><S type="bold">Behavioral React Components</S>: 
+                Son componentes que no renderizan nada sino que únicamente proveen algún tipo de comportamiento o state.
+                </p>
+                <p>
+              <S type="bold">componentDidMount</S> y <S type="bold">componentDidUpdate</S> son ideales para usarlos en conjunto para aislar y ejecutar acciones imperativas. 
+              Así es como React nos permite customizar la manera en que se actualiza la app en respuesta a cambios de estados.
+              </p>
+            </Text> 
           </Slide>
 
         </SlideSet>
@@ -205,7 +228,7 @@ export default class Presentation extends Component {
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes="<ul><li>talk about that</li><li>and that</li></ul>"
         >
           <Heading size={3} caps  textColor="tertiary">
@@ -217,7 +240,7 @@ export default class Presentation extends Component {
                 margin={10}
                 lang="jsx"
                 source={require('raw-loader!../assets/02/02-lecture/AppStart.example')}
-                height="600px"
+                height="550px"
                 overflow="auto"
               />
             </Fill>
@@ -226,15 +249,40 @@ export default class Presentation extends Component {
             </Fill>
           </Layout>
         </Slide>
-        
+
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes="<ul><li>talk about that</li><li>and that</li></ul>"
         >
-          <Heading size={3} caps  textColor="tertiary">
-            Composable
+          <Heading size={1} caps fit  textColor="tertiary">
+            Composable Components
+          </Heading>
+          <Layout>
+            <Fill>
+              <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/02/02-lecture/Composable.example')}
+                height="550px"
+                overflow="auto"
+              />
+            </Fill>
+            <Fill>
+              <Image width="90%" margin="10px auto 10px auto" src={images.tabs} />
+            </Fill>
+          </Layout>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes="<ul><li>talk about that</li><li>and that</li></ul>"
+        >
+          <Heading size={1} fit caps  textColor="tertiary">
+            Composable Components API
           </Heading>
           <Layout>
             <Fill>
@@ -246,7 +294,7 @@ export default class Presentation extends Component {
                   margin={10}
                   lang="jsx"
                   source={require('raw-loader!../assets/02/02-lecture/AppMedio.example')}
-                  height="600px"
+                  height="550px"
                   overflow="auto"
                 />
               </Fill>
@@ -257,11 +305,11 @@ export default class Presentation extends Component {
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes="<ul><li>talk about that</li><li>and that</li></ul>"
         >
-          <Heading size={3} caps  textColor="tertiary">
-            Composable
+          <Heading size={1} fit caps  textColor="tertiary">
+            Component Components
           </Heading>
           <Layout>
             <Fill>
@@ -271,58 +319,32 @@ export default class Presentation extends Component {
               <CodePane
                 margin={10}
                 lang="jsx"
-                source={require('raw-loader!../assets/02/02-lecture/App.example')}
-                height="600px"
+                source={require('raw-loader!../assets/02/02-lecture/ComponentComponent.example')}
+                height="550px"
                 overflow="auto"
               />
             </Fill>
-          </Layout>
-        </Slide>
-        
-        <Slide
-          transitionIn={['slide']}
-          bgColor="primary"
-          margin="-50px 0 40px 0"
-          notes="<ul><li>talk about that</li><li>and that</li></ul>"
-        >
-          <Heading size={3} caps  textColor="tertiary">
-            Composable
-          </Heading>
-          <Layout>
-            <Fill>
-              <Image width="90%" margin="10px auto 10px auto" src={images.tabs_bottom} />
-            </Fill>
-            <Appear fid="2">
-              <Fill>
-                <CodePane
-                  margin={10}
-                  lang="jsx"
-                  source={require('raw-loader!../assets/02/02-lecture/App.example')}
-                  height="600px"
-                  overflow="auto"
-                />
-              </Fill>
-           </Appear>
           </Layout>
         </Slide>
 
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes="Implicit state: non app-level state that the product developer doesn't care about or see in order to use the component API successfully; in React, this is generally accomplished by using React.Children.map and React.cloneElement in order to implicitly pass state-derived or event-callback props to children
                   Component components: design architecture that helps avoid having one component in charge of too much rendering or state; the pattern encourages components to have limit responsibility, which helps identify where certain state and rendering should be owned in a component composition, rather than exposing all options at a single, top-level component with an ever-growing list of props
                   Compound components generally have some level of implicit prop passing in order to accomplish the task of limited responsibility. Rather than treating children components as something to be immediately rendered, compound components clone and extend children components in order pass along useful data."
         >
           <div>
-            <Heading size={2} caps  textColor="tertiary" >
+            <Heading size={4} caps  textColor="tertiary" >
               TL;DR
             </Heading>
             
             <List>
+              <Appear><ListItem><S type="bold">App-level state</S>: state que le interesa al developer y con el que quiere tener la posibilidad de interactuar</ListItem></Appear>
               <Appear><ListItem><S type="bold">Implicit state</S>: state que no está a nivel de App, por lo que no le interesa al usuario de la API del componente. En React esto lo logramos usando <S type="italic">React.Children.map()</S> y <S type="italic">React.cloneElement()</S></ListItem></Appear>
-              <Appear><ListItem><S type="bold">Component components</S>: arquitectura que ayuda a evitar que un componente tenga demasiada responsabilidad de rendering o state (ej: jQuery datepicker)</ListItem></Appear>
-              <Appear><ListItem><S type="bold">Compound components</S>: en general se necesita pasar props implicitamente, clonando elementos, para lograr limitar la responsabilidad</ListItem></Appear>
+              <Appear><ListItem><S type="bold">Compound components</S>: en general necesitamos pasar props implicitamente, clonando elementos, para lograr limitar la responsabilidad</ListItem></Appear>
+              <Appear><ListItem><S type="bold">Component components</S>: diseño de arquitectura que ayuda a evitar que un componente tenga demasiada responsabilidad de rendering o state (ej: jQuery datepicker)</ListItem></Appear>
             </List>
           </div>
         </Slide>
@@ -330,7 +352,7 @@ export default class Presentation extends Component {
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes="
             React context is implemented in two parts: a provider and a consumer.
             The provider component uses the static childContextTypes property in order to specify the name, type, and requirement of the context it plans to provide, and then makes use of the getChildContext life cycle hook to actually provide a context object.
@@ -338,7 +360,7 @@ export default class Presentation extends Component {
           "
         >
           <div>
-            <Heading size={2} caps  textColor="tertiary" >
+            <Heading size={1} fit caps  textColor="tertiary" >
               Implicit State with Context
             </Heading>
             
@@ -347,7 +369,7 @@ export default class Presentation extends Component {
                 margin={10}
                 lang="jsx"
                 source={require('raw-loader!../assets/03/03-lecture/AppStart.example')}
-                height="600px"
+                height="450px"
                 overflow="auto"
               />
             </Fill>
@@ -357,11 +379,11 @@ export default class Presentation extends Component {
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes=""
         >
           <div>
-            <Heading size={2} caps  textColor="tertiary" >
+            <Heading size={3} caps textColor="tertiary" >
               Context
             </Heading>
             <List>
@@ -375,11 +397,11 @@ export default class Presentation extends Component {
         <Slide
           transitionIn={['slide']}
           bgColor="primary"
-          margin="-50px 0 40px 0"
+          margin="0px 0 40px 0"
           notes=""
         >
           <div>
-            <Heading size={2} caps  textColor="tertiary" >
+            <Heading size={3} caps textColor="tertiary" >
               Context
             </Heading>
             
@@ -393,6 +415,216 @@ export default class Presentation extends Component {
               />
             </Fill>
           </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={1} fit caps  textColor="tertiary" >
+            Higher Order Components
+            </Heading>
+            
+            <Fill>
+              <Text textAlign="left">
+                <p>
+                  Los HOCs son funciones que toman un componente como argumento y devuelve un nuevo comoponente con algo de comportamiento extra.
+                </p>
+                <p>
+                  Un HOC <b>NO</b> es un componente que returna un componente, porque eso es precisamente lo que hace por defecto todo componente React.
+                </p>
+              </Text>
+            </Fill>
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={1} fit caps  textColor="tertiary" >
+            Higher Order Components
+            </Heading>
+            
+            <Fill>
+              <Text textAlign="left">
+                <p>
+                  Son ideales para compartir comportamiento y configuración. 
+                  <br/>
+                  <br/>👀 Tener cuidado con: 
+  
+                  <List>
+                    <ListItem>evitar colisión de nombres al usuar multiples HOCs</ListItem>
+                    <ListItem>tener claro las propiedades aportadas por cada HOC</ListItem>
+                    <ListItem>no sobreescribir comportamiento del componente original</ListItem>
+                  </List>
+                </p>
+              </Text>
+            </Fill>
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={3}  caps textColor="tertiary" >
+              HOCs
+            </Heading>
+            
+            <Fill>
+              <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/04/04-lecture/AppStart.example')}
+                height="600px"
+                overflow="auto"
+              />
+            </Fill>
+          </div>
+        </Slide>
+
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={3}  caps textColor="tertiary" >
+              HOCs
+            </Heading>
+            
+            <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/04/04-lecture/App.example')}
+                height="600px"
+                overflow="auto"
+              />
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={3}  caps textColor="tertiary" >
+              Explicit State with HOCs
+            </Heading>
+            
+            <Text textAlign="left">
+              Los HOCs permiten compartir estado de forma explicita. 
+            </Text> 
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={1} fit  caps textColor="tertiary" >
+              Render prop callbacks
+            </Heading>
+
+            <List>
+              <ListItem>Todo HOC puede ser implementado como un render callback.</ListItem>
+              <ListItem>Los render callbacks componen dinamicamente. Ocurren al momento de renderizar un elemento en el metodo render de un componente.</ListItem>
+              <ListItem>Los HOCs componen estaticamente. Ocurre al momento de definir a nuestro componente, no cuando lo renderizamos.</ListItem>
+            </List> 
+          </div>
+        </Slide>
+
+         <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={1} fit  caps textColor="tertiary" >
+              Render prop callbacks
+            </Heading>
+
+            <Text textAlign="left">
+              Son otra manera de extraer comportamiento de un componente a otro componente de forma que pueda ser comportido y reusable. 
+              <p>
+                Pero el <b>verdadero beneficio</b> está en que permite componer el <i>state</i> y compartirlo en la App.
+              </p>
+            </Text>
+          </div>
+        </Slide>
+
+        
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={3}  caps textColor="tertiary" >
+              Render Props
+            </Heading>
+            
+            <CodePane
+                margin={10}
+                lang="jsx"
+                source={require('raw-loader!../assets/05/05-lecture/App.example')}
+                height="600px"
+                overflow="auto"
+              />
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""  
+        >
+          <div>
+            <Heading size={1} fit  caps textColor="tertiary" >
+              Async Rendering
+            </Heading>
+
+            {`{workout.completed && (
+        <React.Timeout ms={500}>
+          {didTimeout =>
+            didTimeout ? (
+              <LoadingSpinner />
+            ) : (
+              <NextWorkout workoutId={workoutId} />
+            )
+          }
+        </React.Timeout>
+      )}`}
+          </div>
+        </Slide>
+
+        <Slide>
+          <Heading size={3} caps textColor="tertiary" >
+            Muchas gracias 🙌🏻
+          </Heading>
+          <center>
+            <Image margin="20px 0px 0px" width="70%" src={images.hambur.replace('/', '')} />
+          </center>
         </Slide>
       </Deck>
     );
