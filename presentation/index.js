@@ -16,12 +16,15 @@ require('normalize.css');
 
 const images = {
   tren: require('../assets/tren.jpg'),
+  kat: require('../assets/kat.png'),
   ryanflorence: require('../assets/ryanflorence_400x400.jpg'),
   tabs: require('../assets/tabs.png'),
   tabs_bottom: require('../assets/tabs_bottom.png'),
   hambur: require('../assets/hambur.jpg'),
   logo: require('../assets/formidable-logo.svg'),
-  markdown: require('../assets/markdown.png')
+  linkedin: require('../assets/linkedin.jpg'),
+  linkedin_01: require('../assets/linkedin_01.jpg'),
+  propaganda: require('../assets/propaganda.jpg'),
 };
 
 preloader(images);
@@ -64,6 +67,51 @@ export default class Presentation extends Component {
             San Francisco, CA
           </Text>
         </Slide>
+
+        <Slide
+          transition={[
+            'fade',
+            (transitioning, forward) => {
+              if (!forward) return;
+              const angle = forward ? -180 : 180;
+              return {
+                transform: `
+                  translate3d(0%, ${transitioning ? 100 : 0}%, 0)
+                  rotate(${transitioning ? angle : 0}deg)
+                `,
+                backgroundColor: transitioning ? '#26afff' : '#000'
+              };
+            }
+          ]}
+          bgColor="black"
+          notes="You can even put notes on your slide. How awesome is that?"
+        >
+          <Fill>
+            <Image src={images.propaganda.replace('/', '')} height="650px" />
+          </Fill>
+        </Slide>
+
+        <Slide
+          transition={['slide']}
+          bgColor="black"
+          notes="You can even put notes on your slide. How awesome is that?"
+        >
+          <Fill>
+            <Image src={images.linkedin_01.replace('/', '')} height="650px" />
+          </Fill>
+        </Slide>
+
+        <Slide
+          transition={['slide']}
+          bgColor="black"
+          notes="You can even put notes on your slide. How awesome is that?"
+        >
+          <Fill>
+            <Image src={images.linkedin.replace('/', '')} height="650px" />
+          </Fill>
+        </Slide>
+
+
         <Slide
           transition={[
             'fade',
@@ -95,6 +143,8 @@ export default class Presentation extends Component {
             He’s worked on small teams at agencies, large teams at successful startups, and as the owner of a small business. 
           </Text>
         </Slide>
+
+        
 
 
         <Slide transition={['slide']}>
@@ -387,6 +437,7 @@ export default class Presentation extends Component {
               Context
             </Heading>
             <List>
+              <ListItem>React v16.3.0</ListItem>
               <ListItem>React context se implementa en dos partes: un <S type="italic">provider</S> y un <S type="italic">consumer</S>.</ListItem>
               <ListItem><S type="bold">Provider</S>: usa la propiedad estática <S type="italic">childContextTypes</S> para especificar el contexto que va a proveer y luego utlizando el hook <S type="italic">getChildContext</S> puede preveer el context</ListItem>
               <ListItem><S type="bold">Consumer</S>: usa la propiedad estática <S type="italic">contextTypes</S> para especificar el contexto que va a consumir. Luego puede utilizar las propiedades de <S type="italic">this.context</S> que matcheen con las declaradas por el <S type="italic">provider</S> </ListItem>
@@ -416,6 +467,7 @@ export default class Presentation extends Component {
             </Fill>
           </div>
         </Slide>
+
 
         <Slide
           transitionIn={['slide']}
@@ -597,24 +649,101 @@ export default class Presentation extends Component {
           transitionIn={['slide']}
           bgColor="primary"
           margin="0px 0 40px 0"
-          notes=""  
+          notes=""
         >
           <div>
-            <Heading size={1} fit  caps textColor="tertiary" >
-              Async Rendering
+            <Heading size={3}  caps textColor="tertiary" >
+              React Suspense
+            </Heading>
+            
+            <List>
+              <ListItem>Todo HOC puede ser implementado como un render callback.</ListItem>
+              <ListItem>Los render callbacks componen dinamicamente. Ocurren al momento de renderizar un elemento en el metodo render de un componente.</ListItem>
+              <ListItem>Los HOCs componen estaticamente. Ocurre al momento de definir a nuestro componente, no cuando lo renderizamos.</ListItem>
+            </List> 
+          </div>
+        </Slide>
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={3} fit caps textColor="tertiary" >
+              Async Rendering y Suspense
             </Heading>
 
-            {`{workout.completed && (
-        <React.Timeout ms={500}>
-          {didTimeout =>
-            didTimeout ? (
-              <LoadingSpinner />
-            ) : (
-              <NextWorkout workoutId={workoutId} />
-            )
-          }
-        </React.Timeout>
-      )}`}
+            <List>
+              <ListItem>en el metodo render, leer un valor del cache.</ListItem>
+              <ListItem>si el valor está cacheado, el rendering continúa normalmente</ListItem>
+              <ListItem>si el valor no está cacheado, el cache <b>tira una promesa</b></ListItem>
+            </List> 
+          </div>
+        </Slide>
+
+
+        <Slide
+          transition={[
+            'fade',
+            (transitioning, forward) => {
+              const angle = forward ? -180 : 180;
+              return {
+                transform: `
+                  translate3d(0%, ${transitioning ? 100 : 0}%, 0)
+                  rotate(${transitioning ? angle : 0}deg)
+                `,
+                backgroundColor: transitioning ? '#26afff' : '#000'
+              };
+            }
+          ]}
+          bgColor="black"
+        >
+          <Image src={images.kat.replace('/', '')} margin="0px auto 40px" />
+          <Heading size={2} caps fit textColor="primary" textFont="primary">
+            Wait what?
+          </Heading>
+        </Slide>
+
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+            <Heading size={3} fit caps textColor="tertiary" >
+              Async Rendering y Suspense
+            </Heading>
+
+            <Text textAlign="left" margin="30px 0 30px 0">
+              <p>Cuando la promesa se resuelve, React vuelve a intentar renderizar desde donde dejó, gracias a los <b>Error Boundaries.</b></p>
+              <p>Necesitamos usar <i>React.Timeout</i>:</p>
+            </Text> 
+            <br/>
+            <Appear>
+              <CodePane
+                  margin={10}
+                  lang="jsx"
+                  source={require('raw-loader!../assets/06/06-lecture/App.example')}
+                  height="600px"
+                  overflow="auto"
+                />
+            </Appear>
+          </div>
+        </Slide>
+
+
+        <Slide
+          transitionIn={['slide']}
+          bgColor="primary"
+          margin="0px 0 40px 0"
+          notes=""
+        >
+          <div>
+          <iframe width="860" height="515" src="https://www.youtube.com/embed/nLF0n9SACd4?rel=0&amp;start=285" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </Slide>
 

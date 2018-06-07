@@ -1,0 +1,11 @@
+{workout.completed && (
+  <React.Timeout ms={500}>
+    {didTimeout =>
+      didTimeout ? (
+        <LoadingSpinner />
+      ) : (
+        <NextWorkout workoutId={workoutId} />
+      )
+    }
+  </React.Timeout>
+)}
