@@ -652,8 +652,8 @@ export default class Presentation extends Component {
           notes=""
         >
           <div>
-            <Heading size={3}  caps textColor="tertiary" >
-              React Suspense
+            <Heading size={3} textColor="tertiary" >
+              HOCs
             </Heading>
             
             <List>
@@ -676,9 +676,10 @@ export default class Presentation extends Component {
             </Heading>
 
             <List>
-              <ListItem>en el metodo render, leer un valor del cache.</ListItem>
+              <ListItem><b>Suspense:</b> permiter diferir el renderizado de una parte del árbol de la app hasta que se cumpla una cierta condición.</ListItem>
+              <ListItem>en el metodo render, lee un valor del cache</ListItem>
               <ListItem>si el valor está cacheado, el rendering continúa normalmente</ListItem>
-              <ListItem>si el valor no está cacheado, el cache <b>tira una promesa</b></ListItem>
+              <ListItem>si el valor no está cacheado, el cache <b>tira una promesa</b>.</ListItem>
             </List> 
           </div>
         </Slide>
@@ -719,11 +720,13 @@ export default class Presentation extends Component {
             </Heading>
 
             <Text textAlign="left" margin="30px 0 30px 0">
-              <p>Cuando la promesa se resuelve, React vuelve a intentar renderizar desde donde dejó, gracias a los <b>Error Boundaries.</b></p>
-              <p>Necesitamos usar <i>React.Timeout</i>:</p>
+              <p>Cuando la promesa se resuelve, React vuelve a intentar renderizar desde donde había dejado. 
+                Esta feature se puede implementar gracias a los <b>Error Boundaries.</b></p>
+              <Appear fid={1}>
+                <p>Necesitamos usar <i>React.Timeout</i>:</p>
+              </Appear>
             </Text> 
-            <br/>
-            <Appear>
+            <Appear fid={2}>
               <CodePane
                   margin={10}
                   lang="jsx"
